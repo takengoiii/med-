@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жазылу — MedJüye PLUS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-hospital-user"></i></div>
+                <a href="index.html" class="logo-text">MedJüye PLUS</a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links show" id="nav-links">
+                <li><a href="index.html">Басты бет</a></li>
+                <li><a href="services.html">Қызметтер</a></li>
+                <li><a href="doctors.html">Дәрігерлер</a></li>
+                <li><a href="departments.html">Бөлімдер</a></li>
+                <li><a href="appointments.html" class="active">Жазылу</a></li>
+                <li><a href="contacts.html">Байланыс</a></li>
+                <li><a href="cabinet.html">Кабинет</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <div class="appointment-premium-card">
+      <form class="appointment-premium-form" id="appointmentForm" autocomplete="off">
+
+        <div class="premium-group">
+          <input type="text" id="fullname" name="fullname" required placeholder="Аты-жөніңіз *" minlength="3" maxlength="50" />
+        </div>
+        <div class="premium-group">
+          <input type="tel" id="phone" name="phone" required pattern="\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="Телефон: +7 (777) 123-45-67 *" maxlength="18" />
+        </div>
+        <div class="premium-group">
+          <input type="email" id="email" name="email" required placeholder="Email *" />
+        </div>
+        <div class="premium-row">
+          <input type="date" id="date" name="date" required min="2025-04-18" class="premium-half" />
+          <input type="time" id="time" name="time" required class="premium-half" />
+        </div>
+        <div class="premium-group">
+          <select id="doctor" name="doctor" required>
+            <option value="">Дәрігерді таңдаңыз *</option>
+            <option>Айбек Жұмабекұлы — Терапевт</option>
+            <option>Гүлнұр Әбдірахман — Педиатр</option>
+            <option>Самат Бекен — Кардиолог</option>
+            <option>Динара Сапар — Хирург</option>
+            <option>Мақсат Әли — Невропатолог</option>
+          </select>
+        </div>
+        <div class="premium-group">
+          <textarea id="notes" name="notes" rows="2" placeholder="Қосымша ақпарат (міндетті емес)"></textarea>
+        </div>
+        <button type="submit" class="premium-btn">Жазылу</button>
+        <div id="formMessage" class="premium-message"></div>
+      </form>
+    </div>
+
+    <div class="container">
+        <p>© 2025 MedJüye PLUS. Барлық құқықтар қорғалған.</p>
+    </div>
+    <script src="/asilbek/main.js"></script>
+    <script>
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = {
+        fullname: document.getElementById('fullname').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        doctor: document.getElementById('doctor').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        notes: document.getElementById('notes').value
+      };
+      fetch('/medplus-clients/api.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      })
+      .then(async r => {
+        let res;
+        try { res = await r.json(); } catch { res = {}; }
+        if (r.ok && res.success) {
+          document.getElementById('formMessage').innerText = 'Жазылу сәтті қабылданды!';
+          document.getElementById('appointmentForm').reset();
+        } else {
+          document.getElementById('formMessage').innerText = 'Қате! Сервер жауабы: ' + (res.error || r.statusText);
+        }
+      })
+      .catch((err) => {
+        document.getElementById('formMessage').innerText = 'Қате! Серверге қосыла алмады: ' + err;
+      });
+    });
+    </script>
+
+                <div style="text-align:center;max-width:600px;margin:0 auto 18px auto;opacity:0.93;">
+                    <p style="font-size:1.08em;">Кеңес: Жазылу алдында барлық деректерді дұрыс толтырыңыз. Егер сұрақтар туындаса, төмендегі пайдалы сілтемелерді қолданыңыз немесе <a href="contacts.html" style="color:#43e2ff;text-decoration:underline;">Байланыс</a> бетіне өтіңіз.</p>
+                </div>
+                <div class="useful-links">
+                    <a href="https://egov.kz" target="_blank"><i class="fas fa-globe"></i> eGov.kz</a>
+                    <a href="https://dmed.kz" target="_blank"><i class="fas fa-user-md"></i> dmed.kz</a>
+                    <a href="https://minzdrav.gov.kz" target="_blank"><i class="fas fa-hospital-alt"></i> minzdrav.gov.kz</a>
+                    <a href="https://kaspi.kz" target="_blank"><i class="fas fa-credit-card"></i> kaspi.kz</a>
+                    <a href="https://online-doctor.kz" target="_blank"><i class="fas fa-laptop-medical"></i> online-doctor.kz</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <div class="container">
+            <p>© 2025 MedJüye PLUS. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+<script src="/asilbek/main.js"></script>
+<script>
+// Мобильді гамбургер меню
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+menuToggle.addEventListener('click', function() {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+});
+</script>
+</body>
+</html>

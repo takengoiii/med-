@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жеке кабинет — MedJüye PLUS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-hospital-user"></i></div>
+                <a href="index.html" class="logo-text">MedJüye PLUS</a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links show" id="nav-links">
+                <li><a href="index.html">Басты бет</a></li>
+                <li><a href="services.html">Қызметтер</a></li>
+                <li><a href="doctors.html">Дәрігерлер</a></li>
+                <li><a href="departments.html">Бөлімдер</a></li>
+                <li><a href="appointments.html">Жазылу</a></li>
+                <li><a href="contacts.html">Байланыс</a></li>
+                <li><a href="cabinet.html" class="active">Кабинет</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+    <section class="profile-hero">
+        <div class="container">
+
+            <div class="profile-wrapper">
+                <!-- Login section -->
+                <div id="login-section" class="profile-login glassmorph">
+
+                    <button class="profile-login-btn google ripple" id="login-google"><i class="fab fa-google"></i> Google арқылы кіру</button>
+                    <button class="profile-login-btn vk ripple" id="login-vk"><i class="fab fa-vk"></i> VK арқылы кіру</button>
+                    <button class="profile-login-btn phone ripple" id="login-phone"><i class="fas fa-phone"></i> Телефон арқылы кіру</button>
+                </div>
+                <!-- Profile section -->
+                <div id="profile-section" class="profile-card glassmorph" style="display:none">
+                    <div class="profile-photo-wrap">
+                        <img id="user-photo" class="profile-photo" src="https://ui-avatars.com/api/?name=User" alt="User Photo">
+                        <button class="profile-edit-btn ripple" id="edit-btn" title="Профильді өңдеу"><i class="fas fa-user-edit"></i></button>
+                    </div>
+                    <div class="profile-info">
+
+                        <div class="profile-email"><i class="fas fa-envelope"></i> <span id="user-email">email</span></div>
+                        <div class="profile-phone"><i class="fas fa-phone"></i> <span id="user-phone">-</span></div>
+                        <button class="profile-logout-btn ripple" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Шығу</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="cabinet.js"></script>
+                        </div>
+                    </div>
+                </div>
+                <div class="useful-links">
+                    <a href="https://egov.kz" target="_blank"><i class="fas fa-globe"></i> eGov.kz</a>
+                    <a href="https://dmed.kz" target="_blank"><i class="fas fa-user-md"></i> dmed.kz</a>
+                    <a href="https://minzdrav.gov.kz" target="_blank"><i class="fas fa-hospital-alt"></i> minzdrav.gov.kz</a>
+                    <a href="https://kaspi.kz" target="_blank"><i class="fas fa-credit-card"></i> kaspi.kz</a>
+                    <a href="https://online-doctor.kz" target="_blank"><i class="fas fa-laptop-medical"></i> online-doctor.kz</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 MedJüye PLUS. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+<script>
+// Мобильді гамбургер меню
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+menuToggle.addEventListener('click', function() {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+});
+</script>
+</body>
+</html>

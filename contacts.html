@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Байланыс — MedJüye PLUS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-hospital-user"></i></div>
+                <a href="index.html" class="logo-text">MedJüye PLUS</a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links show" id="nav-links">
+                <li><a href="index.html">Басты бет</a></li>
+                <li><a href="services.html">Қызметтер</a></li>
+                <li><a href="doctors.html">Дәрігерлер</a></li>
+                <li><a href="departments.html">Бөлімдер</a></li>
+                <li><a href="appointments.html">Жазылу</a></li>
+                <li><a href="contacts.html" class="active">Байланыс</a></li>
+                <li><a href="cabinet.html">Кабинет</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <section class="section-title" style="background: linear-gradient(120deg,rgba(15,32,39,0.82),rgba(44,83,100,0.81)), url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; border-radius: 32px; box-shadow: 0 8px 32px rgba(0,0,0,0.13); backdrop-filter: blur(16px);">
+            <div class="container">
+
+                <div style="text-align:center;max-width:600px;margin:0 auto 18px auto;opacity:0.93;">
+                    <p style="font-size:1.08em;">Кеңес: Барлық сұрақтар бойынша бізге хабарласыңыз немесе төмендегі пайдалы сілтемелерді пайдаланыңыз.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-phone fa-2x"></i>
+
+                        <p><a href="tel:+77001234567" style="color:#fff;">+7 (700) 123-45-67</a></p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-envelope fa-2x"></i>
+
+                        <p><a href="mailto:info@medjuye.kz" style="color:#fff;">info@medjuye.kz</a></p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-map-marker-alt fa-2x"></i>
+
+                        <p>Алматы, Достық 68</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fab fa-whatsapp fa-2x"></i>
+
+                        <p><a href="https://wa.me/77001234567" style="color:#fff;">Чатқа өту</a></p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fab fa-telegram fa-2x"></i>
+
+                        <p><a href="https://t.me/medjuyeplus" style="color:#fff;">@medjuyeplus</a></p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fab fa-instagram fa-2x"></i>
+
+                        <p><a href="https://instagram.com/medjuyeplus" style="color:#fff;">@medjuyeplus</a></p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-clock fa-2x"></i>
+
+                        <p>Дс-Жм: 08:00-20:00<br>Сб: 09:00-15:00<br>Жс: Демалыс</p>
+                    </div>
+                </div>
+                <div class="useful-links">
+                    <a href="https://egov.kz" target="_blank"><i class="fas fa-globe"></i> eGov.kz</a>
+                    <a href="https://dmed.kz" target="_blank"><i class="fas fa-user-md"></i> dmed.kz</a>
+                    <a href="https://minzdrav.gov.kz" target="_blank"><i class="fas fa-hospital-alt"></i> minzdrav.gov.kz</a>
+                    <a href="https://kaspi.kz" target="_blank"><i class="fas fa-credit-card"></i> kaspi.kz</a>
+                    <a href="https://online-doctor.kz" target="_blank"><i class="fas fa-laptop-medical"></i> online-doctor.kz</a>
+                    <a href="https://103.kz" target="_blank"><i class="fas fa-ambulance"></i> 103.kz</a>
+                </div>
+                <div style="margin-top:40px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.987932030757!2d76.89340731544636!3d43.23843797913861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x388369a3a3daf547%3A0x45f5a3c6c65f3d48!2z0L_RgNC-0YHQvy4g0JDQsdCw0Y8gNjgsINCQ0LvQvNCw0YLRiyAwNTAwMDA!5e0!3m2!1sru!2skz!4v1637149020073!5m2!1sru!2skz" width="100%" height="320" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 MedJüye PLUS. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+<script>
+// Мобильді гамбургер меню
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+menuToggle.addEventListener('click', function() {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+});
+// Байланыс карталарын басқанда ішіндегі сілтемеге өту
+Array.from(document.getElementsByClassName('feature-card')).forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function(e) {
+        // Егер ішінде <a> бар болса, бірінші сілтемеге өтеді
+        const link = card.querySelector('a[href]');
+        if (link) {
+            // Егер қолданушы нақты сілтемеге басса, екі рет ашылмас үшін
+            if (e.target.tagName.toLowerCase() === 'a') return;
+            const href = link.getAttribute('href');
+            const target = link.getAttribute('target');
+            if (target === '_blank') {
+                window.open(href, '_blank');
+            } else {
+                window.location.href = href;
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жазылғандар тізімі — MedJüye PLUS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      /* Extra custom styles for table and page layout */
+      .clients-section {
+        max-width: 900px;
+        margin: 32px auto 0 auto;
+        background: var(--card-bg, #fff);
+        border-radius: 18px;
+        box-shadow: 0 4px 32px rgba(67,226,255,0.08), 0 1.5px 8px rgba(67,226,255,0.10);
+        padding: 32px 18px 24px 18px;
+      }
+      .clients-title {
+        font-size: 2.1em;
+        font-weight: 700;
+        color: var(--primary, #00ffe0);
+        letter-spacing: 1px;
+        margin-bottom: 18px;
+        text-align: center;
+      }
+      .clients-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+      }
+      .clients-table th, .clients-table td {
+        padding: 12px 10px;
+        text-align: left;
+        border-bottom: 1px solid #e9f7fb;
+      }
+      .clients-table th {
+        background: linear-gradient(90deg, #00ffe0, #43e2ff 80%);
+        color: #fff;
+        font-weight: 600;
+      }
+      .clients-table tr:hover {
+        background: #f3fcff;
+      }
+      @media (max-width: 700px) {
+        .clients-section {
+          padding: 12px 2px 10px 2px;
+        }
+        .clients-title {
+          font-size: 1.2em;
+        }
+        .clients-table th, .clients-table td {
+          padding: 7px 4px;
+          font-size: 0.98em;
+        }
+      }
+      .no-clients {
+        text-align: center;
+        color: #888;
+        margin: 32px 0 18px 0;
+      }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-hospital-user"></i></div>
+                <a href="index.html" class="logo-text">MedJüye PLUS</a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links show" id="nav-links">
+                <li><a href="index.html">Басты бет</a></li>
+                <li><a href="services.html">Қызметтер</a></li>
+                <li><a href="doctors.html">Дәрігерлер</a></li>
+                <li><a href="departments.html">Бөлімдер</a></li>
+                <li><a href="appointments.html">Жазылу</a></li>
+                <li><a href="contacts.html">Байланыс</a></li>
+                <li><a href="cabinet.html">Кабинет</a></li>
+                <li><a href="clients.html" class="active">Жазылғандар</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+      <section class="clients-section">
+        <div class="clients-title"><i class="fas fa-users"></i> Жазылған адамдар тізімі</div>
+        <div id="clients-table-wrap">
+          <table class="clients-table" id="clients-table" style="display:none;">
+            <thead>
+              <tr>
+                <th>Аты-жөні</th>
+                <th>Телефон</th>
+                <th>Email</th>
+                <th>Дәрігер</th>
+                <th>Күні</th>
+                <th>Уақыты</th>
+                <th>Ескертпе</th>
+              </tr>
+            </thead>
+            <tbody id="clients-tbody">
+            </tbody>
+          </table>
+          <div class="no-clients" id="no-clients">Жазылғандар жоқ</div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 MedJüye PLUS. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+    <script src="/asilbek/main.js"></script>
+    <script>
+    // Мобильді гамбургер меню
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('open');
+    });
+
+    // Мысал үшін: Жазылғандар массиві (нақты жобаға серверден немесе localStorage-тан алу керек)
+    const clients = JSON.parse(localStorage.getItem('appointments') || '[]');
+    const tbody = document.getElementById('clients-tbody');
+    const table = document.getElementById('clients-table');
+    const noClients = document.getElementById('no-clients');
+
+    function renderClients() {
+      if (clients.length === 0) {
+        table.style.display = 'none';
+        noClients.style.display = 'block';
+        return;
+      }
+      table.style.display = 'table';
+      noClients.style.display = 'none';
+      tbody.innerHTML = '';
+      clients.forEach(c => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${c.fullname || ''}</td>
+          <td>${c.phone || ''}</td>
+          <td>${c.email || ''}</td>
+          <td>${c.doctor || ''}</td>
+          <td>${c.date || ''}</td>
+          <td>${c.time || ''}</td>
+          <td>${c.notes || ''}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    renderClients();
+    </script>
+</body>
+</html>
